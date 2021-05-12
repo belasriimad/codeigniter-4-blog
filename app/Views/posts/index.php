@@ -25,14 +25,17 @@ Posts
                         </span>
                         <h5 class="card-title"><?php echo $post->title; ?></h5>
                         <p class="card-text"><?php echo $post->description; ?></p>
-                        <a href="<?= site_url('/posts/show/' . $post->id); ?>" class="btn btn-primary">Voir</a>
+                        <a href="<?= site_url('/posts/show/' . $post->id); ?>" class="btn btn-primary">Read more</a>
                     </div>
                 </div>
             </div>
         <?php endforeach; ?>
     <?php else : ?>
         <div class="alert alert-info">
-            Aucun Article <a href="/posts/create"> Ajouter un article</a>
+            Nothing found 
+            <a href="/posts/create"> 
+                Add new article
+            </a>
         </div>
     <?php endif ?>
 </div>

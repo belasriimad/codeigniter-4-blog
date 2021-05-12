@@ -1,7 +1,7 @@
 <?php $this->extend("layouts/layout"); ?>
 
 <?php $this->section("title"); ?>
-Ajouter un article
+Add new article
 <?php $this->endsection(); ?>
 
 
@@ -11,13 +11,13 @@ Ajouter un article
         <div class="card">
             <div class="card-header bg-white text-center">
                 <h3 class="card-title">
-                    Ajouter un article
+                    Add new article
                 </h3>
                 <hr />
                 <?php if (session()->has("errors")) : ?>
                     <?php foreach (session("errors") as $error) : ?>
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <strong>Erreur!</strong> <?php echo $error; ?>
+                            <strong>Error!</strong> <?php echo $error; ?>
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     <?php endforeach; ?>
@@ -29,7 +29,7 @@ Ajouter un article
                         'type'  => 'text',
                         'name'  => 'title',
                         'id'    => 'title',
-                        'placeholder' => 'Titre',
+                        'placeholder' => 'Title',
                         'class' => 'form-control',
                         'value' => old('title')
                     ];
@@ -37,7 +37,7 @@ Ajouter un article
                     ?>
                 </div>
                 <div class="form-group my-2">
-                    <textarea class="form-control" name="description" id="description" rows="3" placeholder="Description"><?php echo old('description'); ?></textarea>
+                    <textarea class="form-control" name="description" id="description" rows="3" placeholder="Body"><?php echo old('description'); ?></textarea>
                 </div>
                 <div class="form-group">
                     <?php
@@ -52,7 +52,7 @@ Ajouter un article
                 </div>
                 <div class="form-group">
                     <?php
-                    echo form_submit('submit', 'Valider', [
+                    echo form_submit('submit', 'Submit', [
                         'class' => 'btn btn-primary my-2'
                     ]);
                     ?>

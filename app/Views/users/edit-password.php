@@ -1,7 +1,7 @@
 <?php $this->extend("layouts/layout"); ?>
 
 <?php $this->section("title"); ?>
-Modifier le mot de passe
+Update password
 <?php $this->endsection(); ?>
 
 
@@ -11,14 +11,14 @@ Modifier le mot de passe
         <div class="card">
             <div class="card-header bg-white text-center">
                 <h3 class="card-title">
-                    Modifier le mot de passe
+                    Update password
                 </h3>
             </div>
             <div class="card-body p-2">
                 <?php if (session()->has("errors")) : ?>
                     <?php foreach (session("errors") as $error) : ?>
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <strong>Erreur!</strong> <?php echo $error; ?>
+                            <strong>Error!</strong> <?php echo $error; ?>
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     <?php endforeach; ?>
@@ -30,7 +30,7 @@ Modifier le mot de passe
                         'type'  => 'password',
                         'name'  => 'current_password',
                         'id'    => 'current_password',
-                        'placeholder' => 'Mot de passe',
+                        'placeholder' => 'Current password',
                         'class' => 'form-control',
                         'value' => old('current_password')
                     ];
@@ -43,7 +43,7 @@ Modifier le mot de passe
                         'type'  => 'password',
                         'name'  => 'new_password',
                         'id'    => 'new_password',
-                        'placeholder' => 'Le nouveau mot de passe',
+                        'placeholder' => 'New password',
                         'class' => 'form-control my-2',
                         'value' => old('new_password')
                     ];
@@ -52,7 +52,7 @@ Modifier le mot de passe
                 </div>
                 <div class="form-group">
                     <?php
-                    echo form_submit('submit', 'Valider', [
+                    echo form_submit('submit', 'Submit', [
                         'class' => 'btn btn-primary my-2'
                     ]);
                     ?>

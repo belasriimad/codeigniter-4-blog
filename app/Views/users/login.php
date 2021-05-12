@@ -1,7 +1,7 @@
 <?php $this->extend("layouts/layout"); ?>
 
 <?php $this->section("title"); ?>
-Connexion
+Login
 <?php $this->endsection(); ?>
 
 
@@ -11,13 +11,13 @@ Connexion
         <div class="card">
             <div class="card-header bg-white text-center">
                 <h3 class="card-title">
-                    Connexion
+                    Login
                 </h3>
                 <hr />
                 <?php if (session()->has("errors")) : ?>
                     <?php foreach (session("errors") as $error) : ?>
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <strong>Erreur!</strong> <?php echo $error; ?>
+                            <strong>Error!</strong> <?php echo $error; ?>
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     <?php endforeach; ?>
@@ -42,7 +42,7 @@ Connexion
                         'type'  => 'password',
                         'name'  => 'password',
                         'id'    => 'password',
-                        'placeholder' => 'Mot de passe',
+                        'placeholder' => 'Password',
                         'class' => 'form-control',
                         'value' => old('password')
                     ];
@@ -51,7 +51,7 @@ Connexion
                 </div>
                 <div class="form-group">
                     <?php
-                    echo form_submit('submit', 'Valider', [
+                    echo form_submit('submit', 'Submit', [
                         'class' => 'btn btn-primary my-2'
                     ]);
                     ?>

@@ -35,15 +35,15 @@ class Login extends BaseController
                 $session->set("name", $user->name);
                 $session->set("admin", $user->is_admin);
                 return redirect()->to("/")
-                    ->with('success', 'Connecté');
+                    ->with('success', 'Connected');
             } else {
                 return redirect()->back()
-                    ->with('error', 'Email ou mot de passe est incorrect')
+                    ->with('error', 'Invalid credentials')
                     ->withInput();
             }
         } else {
             return redirect()->back()
-                ->with('error', 'Email ou mot de passe est incorrect')
+                ->with('error', 'Invalid credentials')
                 ->withInput();
         }
     }

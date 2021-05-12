@@ -42,7 +42,7 @@ class Profile extends BaseController
                 if ($this->model->save($this->user)) {
                     $session = session();
                     $session->set("name", $this->user->name);
-                    return redirect()->to("/profile")->with("success", "Profile modifié avec succés");
+                    return redirect()->to("/profile")->with("success", "Profile updated");
                 } else {
                     return redirect()->back()
                         ->with('errors', $this->model->errors())
@@ -50,7 +50,7 @@ class Profile extends BaseController
                 }
             } else {
                 return redirect()->back()
-                    ->with('error', "Aucun changement effectué !")
+                    ->with('error', "Nothing changed !")
                     ->withInput();
             }
         } else {
@@ -70,7 +70,7 @@ class Profile extends BaseController
         $password = $this->request->getPost("current_password");
         if (!password_verify($password, $this->user->password)) {
             return redirect()->back()
-                ->with('error', "Le mot de passe est incorrect !")
+                ->with('error', "Invalid password !")
                 ->withInput();
         }
 

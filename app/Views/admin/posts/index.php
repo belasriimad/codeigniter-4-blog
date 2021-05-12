@@ -12,8 +12,8 @@ Admin-Articles
             <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Titre</th>
-                    <th>Description</th>
+                    <th>Title</th>
+                    <th>Body</th>
                     <th></th>
                 </tr>
             </thead>
@@ -29,7 +29,7 @@ Admin-Articles
                             ]); ?>
                             <?php echo form_close(); ?>
                             <button class="btn btn-sm btn-danger" onclick="event.preventDefault();
-                                if(confirm('Voulez vous vraiment supprimer <?php echo $post->title; ?>?'))
+                                if(confirm('Do you want to delete <?php echo $post->title; ?>?'))
                                     document.getElementById(<?php echo $post->id; ?>).submit();
                                 ">
                                 <i class="fas fa-trash"></i>

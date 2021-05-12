@@ -1,7 +1,7 @@
 <?php $this->extend("layouts/layout"); ?>
 
 <?php $this->section("title"); ?>
-Modifier mon profile
+Update profile
 <?php $this->endsection(); ?>
 
 
@@ -11,14 +11,14 @@ Modifier mon profile
         <div class="card">
             <div class="card-header bg-white text-center">
                 <h3 class="card-title">
-                    Modifier mon profile
+                    Update profile
                 </h3>
             </div>
             <div class="card-body p-2">
                 <?php if (session()->has("errors")) : ?>
                     <?php foreach (session("errors") as $error) : ?>
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <strong>Erreur!</strong> <?php echo $error; ?>
+                            <strong>Error!</strong> <?php echo $error; ?>
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     <?php endforeach; ?>
@@ -30,7 +30,7 @@ Modifier mon profile
                         'type'  => 'text',
                         'name'  => 'name',
                         'id'    => 'name',
-                        'placeholder' => 'Nom & Prénom',
+                        'placeholder' => 'Name',
                         'class' => 'form-control',
                         'value' => old('name', $user->name)
                     ];
@@ -52,7 +52,7 @@ Modifier mon profile
                 </div>
                 <div class="form-group">
                     <?php
-                    echo form_submit('submit', 'Valider', [
+                    echo form_submit('submit', 'Submit', [
                         'class' => 'btn btn-primary my-2'
                     ]);
                     ?>
@@ -61,7 +61,7 @@ Modifier mon profile
             </div>
             <div class="card-footer">
                 <a href="<?php echo site_url("profile/editUserPassword"); ?>" class="btn btn-sm btn-warning">
-                    Modifier le mot de passe
+                    Update your password
                 </a>
             </div>
         </div>

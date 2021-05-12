@@ -31,7 +31,7 @@ class Posts extends BaseController
         $post = $this->model->find($id);
         $owner = $post->user_id === session("user_id");
         if (!$post) {
-            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound("L'article $id est introuvable !");
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound("Article $id not found !");
         }
         return view('posts/show', [
             "post" => $post,
@@ -53,7 +53,7 @@ class Posts extends BaseController
             $error_code = $file->getError();
             if ($error_code == UPLOAD_ERR_NO_FILE) {
                 return redirect()->back()
-                    ->with('error', "Veuillez choisir une image !")
+                    ->with('error', "Select an image !")
                     ->withInput();
             }
         }
@@ -61,7 +61,7 @@ class Posts extends BaseController
         $fileSize = $file->getSizeByUnit("mb");
         if ($fileSize > 2) {
             return redirect()->back()
-                ->with('error', "La taille du fichier ne doit pas dépasser 2MB!")
+                ->with('error', "file size exceeded max size 2MB!")
                 ->withInput();
         }
         //check file type (png,jpg,jpeg)
@@ -69,7 +69,7 @@ class Posts extends BaseController
         $types = ["image/png", "image/jpg", "image/jpeg"];
         if (!in_array($type, $types)) {
             return redirect()->back()
-                ->with('error', "Veuillez choisir une image valide")
+                ->with('error', "choose a valid image file")
                 ->withInput();
         }
         //upload the valid file
@@ -79,7 +79,7 @@ class Posts extends BaseController
         $post->post_image = $file->getName();
         $added = $this->model->insert($post);
         if ($added) {
-            return redirect()->to("/posts")->with("success", "Article ajouté avec succés");
+            return redirect()->to("/posts")->with("success", "Article added");
         } else {
             return redirect()->back()
                 ->with('errors', $this->model->errors())
@@ -92,7 +92,6 @@ class Posts extends BaseController
     {
         $post = $this->model->find($id);
         if ($post->user_id === session("user_id")) {
-            $this->model->delete($id);
             return view('posts/edit', ["post" => $post]);
         }
         return redirect()->to("/");
@@ -102,11 +101,10 @@ class Posts extends BaseController
     {
         $post = $this->model->find($id);
         $post->fill($this->request->getPost());
-
         if ($post->user_id === session("user_id")) {
             if ($post->hasChanged('title') || $post->hasChanged('description')) {
                 if ($this->model->save($post)) {
-                    return redirect()->to("/posts")->with("success", "Article modifié avec succés");
+                    return redirect()->to("/posts")->with("success", "Article updated");
                 } else {
                     return redirect()->back()
                         ->with('errors', $this->model->errors())
@@ -114,7 +112,7 @@ class Posts extends BaseController
                 }
             } else {
                 return redirect()->back()
-                    ->with('error', "Aucun changement effectué !")
+                    ->with('error', "Nothing changed !")
                     ->withInput();
             }
         } else {
@@ -127,13 +125,13 @@ class Posts extends BaseController
         $post = $this->model->find($id);
 
         if (!$post) {
-            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound("L'article $id est introuvable !");
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound("Article $id not found !");
         }
 
 
         if ($post->user_id === session("user_id")) {
             $this->model->delete($id);
-            return redirect()->to("/posts")->with("success", "Article supprimé avec succés");
+            return redirect()->to("/posts")->with("success", "Article deleted");
         }
         return redirect()->to("/");
     }
