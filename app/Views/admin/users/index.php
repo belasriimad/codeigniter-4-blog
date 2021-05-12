@@ -1,7 +1,7 @@
 <?php $this->extend("layouts/layout"); ?>
 
 <?php $this->section("title"); ?>
-Admin-Inscrits
+Admin-Users
 <?php $this->endsection(); ?>
 
 
@@ -12,7 +12,7 @@ Admin-Inscrits
             <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Nom & Prénom</th>
+                    <th>Name</th>
                     <th>Email</th>
                     <th></th>
                     <th></th>
@@ -31,7 +31,7 @@ Admin-Inscrits
                                 </span>
                             <?php else : ?>
                                 <span class="badge bg-danger">
-                                    Inscrit
+                                    Simple user
                                 </span>
                             <?php endif; ?>
                         </td>
@@ -41,7 +41,7 @@ Admin-Inscrits
                             ]); ?>
                             <?php echo form_close(); ?>
                             <button class="btn btn-sm btn-danger <?php echo $user->id === session("user_id") ? "disabled" : ""; ?>" onclick="event.preventDefault();
-                                if(confirm('Voulez vous vraiment supprimer <?php echo $user->name; ?>?'))
+                                if(confirm('Do you want to delete <?php echo $user->name; ?>?'))
                                     document.getElementById(<?php echo $user->id; ?>).submit();
                                 ">
                                 <i class="fas fa-trash"></i>

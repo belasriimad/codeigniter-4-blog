@@ -1,7 +1,7 @@
 <?php $this->extend("layouts/layout"); ?>
 
 <?php $this->section("title"); ?>
-Accueil
+Home
 <?php $this->endsection(); ?>
 
 
@@ -26,7 +26,7 @@ Accueil
                     </span>
                     <h5 class="card-title"><?php echo $post->title; ?></h5>
                     <p class="card-text"><?php echo $post->description; ?></p>
-                    <a href="<?= site_url('/posts/show/' . $post->id); ?>" class="btn btn-primary">Voir</a>
+                    <a href="<?= site_url('/posts/show/' . $post->id); ?>" class="btn btn-primary">Read more</a>
                 </div>
             </div>
         </div>

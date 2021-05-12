@@ -12,7 +12,7 @@ Profile - <?php echo $user->name; ?>
             <img src="https://picsum.photos/id/237/200/300" class="rounded-circle shadow-sm" width="200" height="200" alt="photo de profile">
             <div class="p-2">
                 <p>
-                    Nom & Prénom :
+                    Name :
                     <span class="text-primary">
                         <?php echo $user->name; ?>
                     </span>

@@ -28,7 +28,7 @@ class Register extends BaseController
         }
 
         if ($this->model->insert($user)) {
-            return redirect()->to("/posts")->with("success", "Compte créé avec succés");
+            return redirect()->to("/posts")->with("success", "Account created");
         } else {
             return redirect()->back()
                 ->with('errors', $this->model->errors())

@@ -23,16 +23,16 @@
     <?php echo $post->description; ?>
 </p>
 <?php if ($owner) : ?>
-    <a href=" <?php echo site_url("/posts/edit/" . $post->id); ?>" class="btn btn-sm btn-warning">Modifier</a>
+    <a href=" <?php echo site_url("/posts/edit/" . $post->id); ?>" class="btn btn-sm btn-warning">Update</a>
     <?php echo form_open('posts/delete/' . $post->id, [
         'id' => 'deletePost'
     ]); ?>
     <?php echo form_close(); ?>
     <button class="btn btn-sm btn-danger" onclick="event.preventDefault();
-                    if(confirm('Voulez vous vraiment supprimer cet article ?'))
+                    if(confirm('Are you sure ?'))
                         document.getElementById('deletePost').submit();
                     ">
-        Supprimer
+        Delete
     </button>
 <?php endif; ?>
 <?php $this->endsection(); ?>
